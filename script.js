@@ -92,6 +92,26 @@ radios.forEach(radio => {
 });
 
 
+function playSuccessSound() {
+  try {
+    // charge / réutilise un même objet Audio pour éviter plusieurs requêtes
+    if (!window._applauseAudio) {
+      window._applauseAudio = new Audio('/applaudissement.mp3');
+      window._applauseAudio.volume = 0.8; // ajuste le volume si besoin (0.0 - 1.0)
+      window._applauseAudio.preload = 'auto';
+    }
+    const audio = window._applauseAudio;
+    audio.currentTime = 0;
+    const p = audio.play();
+    if (p && typeof p.then === 'function') {
+      p.catch(err => console.warn('Lecture audio impossible:', err));
+    }
+  } catch (e) {
+    console.warn('Audio non supporté', e);
+  }
+}
+
+
 function showPopup(finalScore) {
   const popup = document.getElementById('popup');
   const finalScoreElement = document.getElementById('finalScore');

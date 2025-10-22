@@ -92,16 +92,47 @@ radios.forEach(radio => {
 });
 
 
- function showPopup(finalScore) {
-    const popup = document.getElementById('popup');
-    const finalScoreElement = document.getElementById('finalScore');
-    finalScoreElement.innerText = finalScore;
-    popup.classList.remove('hidden');
+function showPopup(finalScore) {
+  const popup = document.getElementById('popup');
+  const finalScoreElement = document.getElementById('finalScore');
+  const felicitation = document.querySelector('.felicitation');
+  const note_basse = document.querySelector('.note_basse');
 
-    const closePopupBtn = document.getElementById('closePopup');
+  if (!popup || !finalScoreElement) return;
+
+  finalScoreElement.innerText = finalScore;
+  // reset classes
+  finalScoreElement.classList.remove('text-red-500', 'text-green-400');
+
+  // afficher popup
+  popup.classList.remove('hidden');
+
+  // priorité : toutes bonnes réponses
+  if (finalScore === data.length) {
+    felicitation && felicitation.classList.remove('hidden');
+    note_basse && note_basse.classList.add('hidden');
+    finalScoreElement.classList.add('text-green-400');
+    if (typeof playSuccessSound === 'function') playSuccessSound();
+  }
+  // bonne moitié ou plus
+  else if (finalScore >= data.length / 2) {
+    felicitation && felicitation.classList.add('hidden');
+    note_basse && note_basse.classList.add('hidden');
+    finalScoreElement.classList.add('text-green-400');
+  }
+  // mauvaise note
+  else {
+    felicitation && felicitation.classList.add('hidden');
+    note_basse && note_basse.classList.remove('hidden');
+    finalScoreElement.classList.add('text-red-500');
+  }
+
+  const closePopupBtn = document.getElementById('closePopup');
+  if (closePopupBtn) {
     closePopupBtn.addEventListener('click', () => {
-        popup.classList.add('hidden');
-    }); 
+      popup.classList.add('hidden');
+    }, { once: true });
+  }
 }
 
 

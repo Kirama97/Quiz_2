@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+     <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <title>Quiz</title> 
+</head>
+<body class="min-h-screen bg-slate-900 text-white antialiased">
+
+       <header class="fixed inset-x-0 top-0 z-50 h-16 md:h-20 bg-slate-800/90 backdrop-blur flex items-center justify-between px-4 md:px-8">
+            <h1 class="text-lg md:text-2xl font-bold">Quiz App</h1>
+            <div class="bg-yellow-200 text-slate-900 rounded-md px-3 py-1 md:px-4 md:py-2">
+            Score : <strong id="score" class="ml-1">0</strong>
+            </div>
+        </header>
+
+    <main class="pt-20 pb-12 md:pt-24 md:pb-20 max-w-5xl mx-auto px-4">
+
+        <!-- contenu du slider -->
+
+         <section class="w-full mx-auto">
+
+              <div class="relative w-full max-w-4xl mx-auto">
+                  <div class="slider overflow-hidden rounded-lg shadow-lg bg-slate-800 h-[70vh] md:h-[78vh]">
+
+                      <div id="slides" class="app flex h-full transition-transform duration-300 ease-in-out">
+                          <!-- slide 1 -->
+
+                             <!-- <article class="w-full flex-shrink-0 p-6 h-full flex flex-col gap-6">
+                             
+                                <div>
+                                    <h2 class="text-sm md:text-base font-semibold text-slate-300">Question 1</h2>
+                                    <p id="question-0" class="mt-2 text-xl md:text-2xl font-bold">Quelle est la capitale de la France ?</p>
+                                </div>
+
+                                <div class="bg-slate-700/60 rounded-lg p-4 flex-1 overflow-auto">
+                                    <p class="text-sm text-slate-300 mb-3">Choisissez une réponse :</p>
+                                    <ul class="space-y-3">
+                                           <li class="bg-neutral-400 p-3 w-full flex items-center mb-3 rounded-xl">
+                                                  <label class="inline-flex items-center  gap-5 cursor-pointer w-full">
+                                                    <input type="radio" name="q-${index}" class="sr-only peer" data-bon="${rep.correct}" data-q="${index}" data-r="${rIndex}">
+                                                     <div class="btn w-11 h-6 bg-gray-300 rounded-full relative transition">
+                                                        <div class="switch absolute left-1 top-1 bg-white w-4 h-4 rounded-full transition-all"></div>
+                                                    </div>
+                                                    <span class="  text-md text-gray-100">reponse</span>
+                                                </label>
+                                           </li>
+                                    </ul>
+                                </div>
+
+                            </article> -->
+                      
+
+                       
+
+                      </div>
+
+                  </div>
+              </div>
+
+                  <!-- pagination numerotée -->
+            <div id="pagination" class="mt-4 flex justify-center gap-2"></div>
+            </div>
+
+            <!-- bouton valider -->
+            <div class="mt-8 flex justify-center">
+                <button id="valider" class="px-6 py-3 bg-green-500 hover:bg-green-600 rounded-lg text-white font-medium">Valider</button>
+            </div>
+
+         </section>
+         
+
+
+        <!-- pop up score  -->
+
+        <div id="popup" class="fixed inset-0 bg-black/50 flex items-center justify-center hidden ">
+            <div class="bg-slate-800 rounded-lg p-6 w-80 md:w-full max-w-md text-center">
+            <h2 class="text-2xl font-bold mb-2">Votre Score</h2>
+            <p class="mb-4">Vous avez obtenu <span id="finalScore" class="font-semibold text-green-400">0</span> points</p>
+            <button id="closePopup" class="px-4 py-2 bg-green-500 rounded text-white">Fermer</button>
+          </div>
+       </div>
+       
+        
+    </main>
+    
+
+
+<script src="/script.js" type="module"></script>
+</body>
+</html>

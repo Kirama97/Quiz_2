@@ -1,0 +1,11 @@
+
+
+*{
+    box-sizing:border-box
+}
+
+:root {
+    --bg:#0f1724;
+    --card:#0b1220;
+    --glass: rgba(255,255,255,0.03);
+}

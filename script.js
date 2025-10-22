@@ -272,7 +272,7 @@ document.addEventListener('change', (e) => {
   const target = e.target;
   if (target && target.matches('input[type="radio"]')) {
     if (current < slides.length - 1) {
-      setTimeout(() => goTo(current + 1), 200);
+      setTimeout(() => goTo(current + 1),1000);
     }
   }
 });
